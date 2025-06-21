@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Joy • Today's Quote</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    .emotion-title {
+  margin-top: 30px !important;  /* 기본 90px → 30px 정도로 */
+}
+
+    .quote-box {
+      max-width: 700px;
+      margin: 0px auto 0px;
+      text-align: left;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      position: relative;
+  top: -240px;  /* 🔼 위로 당김 */
+  font-family: 'GowunBatang-Regular', serif; /* ✅ 추가 */
+    }
+
+    .quote-box p {
+      margin-bottom: 1em;
+    }
+
+    .quote-box .author {
+      text-align: right;
+      font-size: 0.95rem;
+      font-style: italic;
+      font-family: 'GowunBatang-Regular', serif; /* ✅ 추가 */
+    }
+
+    .quote-box .eng {
+      margin-top: 60px;
+      color: #444;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      font-style: italic;
+      font-family: 'GowunBatang-Regular', serif; /* ✅ 추가 */
+    }
+
+    .nav-arrows {
+      font-size: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 950px;
+      margin: 170px auto 170px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    html, body {
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url('10.jpg'); /* 종이질감 이미지 경로 */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed; /* ✅ 스크롤해도 배경 고정 */
+}
+
+@font-face {
+  font-family: 'GowunBatang-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 class="logo">Today's Quote</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#quote">Today's Quote</a>
+    <a href="#">Bookstore</a>
+  </nav>
+</header>
+
+<section class="welcome">
+  <h2 class="emotion-title">Joy</h2>
+</section>
+
+<section class="nav-arrows">
+  <div id="prev">◀</div>
+  <div id="next">▶</div>
+</section>
+
+<section class="quote-box" id="quote-box">
+  <!-- JS로 여기에 구절이 들어감 -->
+</section>
+
+<footer>
+  <small>Your Quote of the Day</small>
+</footer>
+
+<script>
+  const quotes = [
+    {
+      text: "외계인을 사귀다니 어쩐지 지구 대표가 된 것 같아서 행동 하나하나에 신경쓰게 되었던 것이다. 물론 길거리를 걷는 다른 연인들도 겉보기와 달리 한쪽이 멀리서 온 존재일 수 있지만, 어쨌든 지역구 정도는 대표하고 있지 않을까 했다.",
+      author: "지구에서 한아뿐, 정세랑",
+      eng: "Dating an alien made me feel like Earth's representative, as if every little action of mine carried weight. Of course, even other couples walking down the street might seem ordinary on the surface, but perhaps one of them, too, is from far away—at the very least, representing their own district."
+    },
+    {
+      text: "선생님은 늘 정성 들여 운동 기구의 이름을 알려주지만 그런 것이 머리에 남는 경우는 거의 없다. 다리 운동 기구니까 '레그 헬', '레그 지저스크라이스트', '레그 엑소시즘' 뭐 이런 이름들이 아닐까 추측해 볼 뿐이다.",
+      author: "오색 찬란 실패담, 정지음",
+      eng: "SThe trainer always takes great care to tell me the proper names of the workout machines, but they rarely stick in my head. Since it’s a leg machine, I just assume it’s called something like 'Leg Hell,' 'Leg Jesus Christ,' or maybe even 'Leg Exorcism.'"
+    },
+    {
+      text: "내가 세상에서 제일 재미있다면 나는 당연히 나랑 놀고 싶어진다. 남들과 덜 놀면 높은 확률로 슬픈 사건이 줄어든다. 누군가 나를 떠날 거란 걱정, 싫어할 거란 걱정, 실제로 떠나거나 싫어하는 사건에 쓰이는 걱정이 줄어들기 떄문이다. 무엇보다 그런 일이 벌어진다 한들 예전처럼 두렵지 않다. 내게는 내가 있어 영원히 홀로 된 기분이 들지 않는다.",
+      author: "젊은 ADHD의 슬픔, 정지음",
+      eng: "If I’m the most fun person in the world, of course I’d want to spend time with myself. Spending less time with others often means fewer sad events. There’s less anxiety about someone leaving me, disliking me, or actually doing those things. And most of all, even if those things happen, I’m no longer afraid like I used to be. I have myself, so I never truly feel alone."
+    }
+    // 필요하면 계속 추가
+  ];
+
+  let currentIndex = Math.floor(Math.random() * quotes.length);
+  const quoteBox = document.getElementById("quote-box");
+
+  function renderQuote(index) {
+    const q = quotes[index];
+    quoteBox.innerHTML = `
+      <p>${q.text}</p>
+      <div class="author">${q.author}</div>
+      <div class="eng">${q.eng}</div>
+    `;
+  }
+
+  document.getElementById("prev").addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + quotes.length) % quotes.length;
+    renderQuote(currentIndex);
+  });
+
+  document.getElementById("next").addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % quotes.length;
+    renderQuote(currentIndex);
+  });
+
+  renderQuote(currentIndex);
+</script>
+
+</body>
+</html>

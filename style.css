@@ -2,9 +2,12 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
+    background-image: url('10.jpg'); /* 또는 'images/10.jpg' */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   font-family: "Helvetica Neue", Arial, sans-serif;
-  color: #000;
-  background: #fff;
+  color: #333;
   text-align: center;
 }
 
@@ -25,42 +28,63 @@ header nav a {
 
 .logo { font-size: 1.4rem; }
 
-/* ───────────── 책 이미지 ───────────── */
-.hero { margin: 40px 0 20px; }
-.book-img { width: 200px; }
+.icon-img {
+  width: 200px;
+  margin: 0 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.music-img {
+  width: 180px; /* 책보다 살짝 작게 */
+}
+
 
 /* ───────────── 메인 카피 ───────────── */
 .welcome h2 {
-  font-size: clamp(1.5rem, 3vw + 1rem, 3rem);
-  font-weight: 700;
+  font-size: clamp(1.2rem, 2.5vw + 0.9rem, 2.5rem);
+  font-weight: 500;
   line-height: 1.2;
   max-width: 80%;
-  margin: 0 auto 80px;
+  margin: 0 auto 20px;
+    font-family: 'MonoplexKRWideNerd-BoldItalic';
+     font-weight: 700; /* 또는 800 */
+
 }
 
 /* ───────────── 감정 단어 ───────────── */
 .feelings {
   position: relative;   /* 기준점 */
   width: 100%;
-  height: 400px;        /* 감정 단어 영역 높이 설정 */
+  height: 600px;        /* 감정 단어 영역 높이 설정 */
   margin-top: 100px;
+   overflow: visible; /* 넘치는 부분도 보이게 허용! */
 }
 
 .feeling {
   position: absolute;              /* 각 단어를 좌표로 배치하기 위해 */
-  animation: float 4s ease-in-out infinite;
+  animation: float 5s ease-in-out infinite;
   text-decoration: none;
-  color: #000;
-  font-size: 1.4rem;
+  color: #6B4C3B;
+  font-size: clamp(0.8rem, 2vw + 0.5rem, 1.3rem);
+     font-family: 'MonoplexKRWideNerd-BoldItalic';
+     font-weight: 500; /* 또는 800 */
+     line-height: 1.5;       /* ✅ 줄 간격 여유 줘서 잘림 방지 */
+  padding: 4px 8px;       /* ✅ 텍스트 박스에 여유 공간 확보 */
+  transition: all 0.3s ease;
 }
-.feeling-joy         { top: 50px;  left: 150px; }
-.feeling-loneliness  { top: 80px;  left: 400px; }
-.feeling-anger       { top: 40px;  left: 750px; }
-.feeling-longing     { top: 120px; left: 1200px; }
-.feeling-sadness     { top: 230px; left: 250px; }
-.feeling-emptiness   { top: 270px; left: 650px; }
-.feeling-excitement  { top: 200px; left: 950px; }
-.feeling-love        { top: 60px; left: 1400px; }
+.feeling:hover {
+  transform: scale(1.5);      /* 살짝 확대 */
+  color: #000;             /* 갈색 톤 */
+} 
+.feeling-joy         { top: 10vh; left: 12vw; }
+.feeling-loneliness  { top: 15vh; left: 32vw; }
+.feeling-anger       { top: 8vh;  left: 50vw; }
+.feeling-longing     { top: 14vh; left: 68vw; }
+.feeling-sadness     { top: 30vh; left: 18vw; }
+.feeling-emptiness   { top: 35vh; left: 45vw; }
+.feeling-excitement  { top: 29vh; left: 72vw; }
+.feeling-love        { top: 12vh; left: 85vw; }
+
 
 /* 단어마다 시작 타이밍을 살짝씩 다르게 */
 .feeling:nth-child(2) { animation-delay: .5s; }
@@ -68,13 +92,23 @@ header nav a {
 .feeling:nth-child(4) { animation-delay: 1.5s; }
 /* 필요하면 더 추가 */
 
+
+.emotion-title {
+  font-size: 1.5rem !important;
+  margin-top: 90px !important;
+  font-weight: 300;
+  text-align: center;
+}
+
 @keyframes float {
   0%   { transform: translateY(0); }
-  25%  { transform: translateY(-30px); }
+  25%  { transform: translateY(-20px); }
   50%  { transform: translateY(0); }
-  75%  { transform: translateY(15px); }
+  75%  { transform: translateY(10px); }
   100% { transform: translateY(0); }
 }
+
+
 
 /* ───────────── 푸터 ───────────── */
 footer {
@@ -82,5 +116,25 @@ footer {
   bottom: 20px;
   right: 40px;
   color: #999;
-  font-size: .9rem;
+  font-size: 1.2rem;
 }
+
+@font-face {
+  font-family: 'EF_jejudoldam';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'MonoplexKRWideNerd-BoldItalic';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_Monoplex-widenerd@1.0/MonoplexKRWideNerd-BoldItalic.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.icon-img:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
